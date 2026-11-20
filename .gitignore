@@ -1,0 +1,31 @@
+# ========== 只提交「管理器 + 配置」，任何业务项目都不进仓库 ==========
+/projects/*
+!/projects/.gitkeep
+/exports/*
+!/exports/.gitkeep
+
+# ========== _panel 的依赖与运行态 ==========
+_panel/server/node_modules/
+_panel/server/.token
+_panel/server/.pid
+_panel/server/.create-prefs.json
+_panel/logs/*
+!/_panel/logs/.gitkeep
+
+# ========== 通用环境产物（万一将来有项目被显式纳入仓库） ==========
+node_modules/
+venv/
+__pycache__/
+*.pyc
+dist/
+*.pid
+*.log
+uploads/
+.env
+.env.*
+
+# ========== 编辑器 / 系统 ==========
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

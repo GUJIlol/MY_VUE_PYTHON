@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f1115">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23171a21'/%3E%3Cpath d='M9 12h14M9 16h14M9 20h9' stroke='%2335c98a' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<title>项目管理器</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 鉴权 -->
+<div id="authScreen" class="auth hidden">
+  <div class="auth-box">
+    <h1>项目管理器</h1>
+    <p class="muted">首次使用需要 token。运行 <code>_panel/run.sh</code> 会打印一个带 token 的地址，直接打开它即可自动登录。</p>
+    <input id="authToken" placeholder="粘贴 token" autocomplete="off" spellcheck="false">
+    <button id="authBtn" class="primary wide">进入</button>
+    <p id="authErr" class="err hidden"></p>
+  </div>
+</div>
+
+<!-- 主界面 -->
+<main id="main" class="hidden">
+  <header class="topbar">
+    <div class="brand">
+      <h1>项目管理器</h1>
+      <div class="base" id="basePath">—</div>
+    </div>
+    <div class="top-actions">
+      <button id="btnEnv" class="icon">环境</button>
+      <button id="btnRefresh" class="icon">刷新</button>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <button id="btnCreate" class="primary">＋ 新建项目</button>
+    <button id="btnImport" class="primary">导入项目</button>
+    <button id="btnExports" class="ghost">打包记录</button>
+  </div>
+
+  <div id="portBanner" class="banner hidden"></div>
+
+  <section id="projects" class="projects"></section>
+
+  <footer class="foot">
+    <span id="footInfo" class="muted"></span>
+  </footer>
+</main>
+
+<!-- 日志抽屉 -->
+<div id="logDrawer" class="drawer hidden">
+  <div class="drawer-head">
+    <div class="drawer-title" id="logTitle">日志</div>
+    <div class="drawer-tabs">
+      <button data-role="backend" class="tab active">后端</button>
+      <button data-role="frontend" class="tab">前端</button>
+    </div>
+    <div class="drawer-tools">
+      <button id="logClear" class="icon">清屏</button>
+      <button id="logClose" class="icon">关闭</button>
+    </div>
+  </div>
+  <pre id="logBody" class="log-body"></pre>
+</div>
+
+<!-- 通用弹层 -->
+<div id="modalMask" class="mask hidden">
+  <div id="modal" class="modal"></div>
+</div>
+
+<!-- 全局 loading -->
+<div id="loading" class="loading hidden">
+  <div class="spinner"></div>
+  <div id="loadingText">执行中…</div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
